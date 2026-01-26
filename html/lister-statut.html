@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Par Statut - Gestion RV</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a class="navbar-brand" href="accueil.html">📅 Gestion RV Médicaux</a>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="accueil.html">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="creer-compte.html">Créer Compte</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="demande-rv.html">Nouvelle RV</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#">Consulter</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="lister-rv.html">Toutes les RV</a></li>
+                        <li><a class="dropdown-item" href="lister-type.html">Par Type</a></li>
+                        <li><a class="dropdown-item active" href="lister-statut.html">Par Statut</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h1>Filtrer les rendez-vous par statut</h1>
+                    <form method="GET" action="lister-statut.php" class="card">
+                        <div class="card-body">
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                                <div class="form-group">
+                                    <label for="telephone" class="form-label">Téléphone du patient</label>
+                                    <input type="tel" class="form-control" id="telephone" name="telephone" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="statut" class="form-label">Statut du rendez-vous</label>
+                                    <select class="form-control" id="statut" name="statut" required>
+                                        <option value="">-- Sélectionnez --</option>
+                                        <option value="en attente">En attente</option>
+                                        <option value="accepté">Accepté</option>
+                                        <option value="rejeté">Rejeté</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary" type="submit" style="width: 100%; margin-top: 0.5rem;">Rechercher</button>
+                        </div>
+                    </form>
+
+                    <div id="resultats" style="margin-top: 2rem;">
+                        <!-- Les résultats s'afficheront ici -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Gestion RV Médicaux. Tous droits réservés.</p>

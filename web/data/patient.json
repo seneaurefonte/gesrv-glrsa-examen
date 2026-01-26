@@ -1,0 +1,58 @@
+{
+    "patients": [
+        {
+            "id": 1,
+            "nom": "Dupont",
+            "prenom": "Jean",
+            "date_naissance": "1980-05-15",
+            "telephone": "771001010",
+            "maladies": "Diabète, Hypertension",
+            "demandes": [
+                {
+                    "id": 1,
+                    "date": "2026-01-30",
+                    "heure": "10:30",
+                    "type": "Consultation",
+                    "consultation": "Cardiologie",
+                    "statut": "en attente"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "nom": "Martin",
+            "prenom": "Marie",
+            "date_naissance": "1990-08-22",
+            "telephone": "0987654321",
+            "maladies": "Asthme",
+            "demandes": [
+                {
+                    "id": 1,
+                    "date": "2026-02-05",
+                    "heure": "14:00",
+                    "type": "Prestation",
+                    "prestation": "Radio",
+                    "statut": "accepté"
+                }
+            ]
+        },
+        {
+            "telephone": "771001011",
+            "nom": "xxx",
+            "prenom": "xx",
+            "date_naissance": "2026-01-25",
+            "maladies": "xxxx",
+            "id": 3,
+            "demandes": []
+        },
+        {
+            "telephone": "771001012",
+            "nom": "Wane",
+            "prenom": "Baila",
+            "date_naissance": "2026-01-27",
+            "maladies": "Ggg,ccc,fff",
+            "id": 4,
+            "demandes": []
+        }
+    ]
+}

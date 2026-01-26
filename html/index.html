@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Créer un compte - Gestion RV</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a class="navbar-brand" href="accueil.html">📅 Gestion RV Médicaux</a>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="accueil.html">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="index.html">Créer Compte</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="demande-rv.html">Nouvelle RV</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#">Consulter</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="lister-rv.html">Toutes les RV</a></li>
+                        <li><a class="dropdown-item" href="lister-type.html">Par Type</a></li>
+                        <li><a class="dropdown-item" href="lister-statut.html">Par Statut</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col-lg-8 mx-auto">
+                    <h1>Créer un compte patient</h1>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="card">
+                        <div class="card-body">
+                            <form method="POST" action="creer-compte.php">
+                                <div class="form-group">
+                                    <label for="nom" class="form-label">Nom du patient</label>
+                                    <input type="text" class="form-control" id="nom" name="nom" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="prenom" class="form-label">Prénom du patient</label>
+                                    <input type="text" class="form-control" id="prenom" name="prenom" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="date_naissance" class="form-label">Date de naissance</label>
+                                    <input type="date" class="form-control" id="date_naissance" name="date_naissance" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="telephone" class="form-label">Téléphone</label>
+                                    <input type="tel" class="form-control" id="telephone" name="telephone" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="maladies" class="form-label">Maladies (séparées par des virgules)</label>
+                                    <textarea class="form-control" id="maladies" name="maladies" rows="4" placeholder="Ex: Diabète, Hypertension, Asthme"></textarea>
+                                </div>
+
+                                <div class="btn-group">
+                                    <a href="accueil.html" class="btn btn-secondary">Annuler</a>
+                                    <button type="submit" class="btn btn-primary">Créer le compte</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Gestion RV Médicaux. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>

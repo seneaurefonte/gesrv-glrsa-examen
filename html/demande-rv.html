@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nouvelle RV - Gestion RV</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="accueil.html">
+                <i class="bi bi-calendar2-check"></i> Gestion RV Médicaux
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="accueil.html">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="creer-compte.html">Créer Compte</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="demande-rv.html">Nouvelle RV</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                            Consulter
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="lister-rv.html">Toutes les RV</a></li>
+                            <li><a class="dropdown-item" href="lister-type.html">Par Type</a></li>
+                            <li><a class="dropdown-item" href="lister-statut.html">Par Statut</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h1>Faire une demande de rendez-vous</h1>
+                    <form method="POST" action="creer-demande.php" class="card">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="telephone" class="form-label">Téléphone du patient</label>
+                                <input type="tel" class="form-control" id="telephone" name="telephone" required>
+                            </div>
+
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                                <div class="form-group">
+                                    <label for="date" class="form-label">Date souhaitée</label>
+                                    <input type="date" class="form-control" id="date" name="date" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="heure" class="form-label">Heure souhaitée</label>
+                                    <input type="time" class="form-control" id="heure" name="heure" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="type" class="form-label">Type de rendez-vous</label>
+                                <select class="form-control" id="type" name="type" required onchange="updateOptions()">
+                                    <option value="">-- Sélectionnez --</option>
+                                    <option value="Consultation">Consultation</option>
+                                    <option value="Prestation">Prestation</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group" id="consultation-group" style="display:none;">
+                                <label for="consultation" class="form-label">Type de consultation</label>
+                                <select class="form-control" id="consultation" name="consultation">
+                                    <option value="">-- Sélectionnez --</option>
+                                    <option value="Cardiologie">Cardiologie</option>
+                                    <option value="Généraliste">Généraliste</option>
+                                    <option value="Ophtalmologie">Ophtalmologie</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group" id="prestation-group" style="display:none;">
+                                <label for="prestation" class="form-label">Type de prestation</label>
+                                <select class="form-control" id="prestation" name="prestation">
+                                    <option value="">-- Sélectionnez --</option>
+                                    <option value="Radio">Radio</option>
+                                    <option value="Analyse">Analyse</option>
+                                </select>
+                            </div>
+
+                            <div class="btn-group">
+                                <a href="accueil.html" class="btn btn-secondary">Annuler</a>
+                                <button type="submit" class="btn btn-primary">Créer la demande</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Gestion RV Médicaux. Tous droits réservés.</p>
+    </footer>
+    <script>
+        function updateOptions() {
+            const type = document.getElementById('type').value;
+            document.getElementById('consultation-group').style.display = type === 'Consultation' ? 'block' : 'none';
+            document.getElementById('prestation-group').style.display = type === 'Prestation' ? 'block' : 'none';
+        }
+    </script>
+</body>
+</html>
