@@ -1,11 +1,19 @@
-<?php 
-function addPatient(array &$patients, array $patient) {
+<?php
+$patients=[];
+$demandes = [];
+$typesRV=['Consultation','Prestation'];
+$consultations=["Cardiologie","Genaraliste","Ophtalmologie"];
+$prestations=["Radio","Analyse"];
+$statuts=["ENATTENTE","ACCEPTER","REJETER"];
+function addPatient(array $patient) {
+    global $patients;
     $patient['id'] = generateID($patients);
     $patient['demandes'] = [];
     $patients[] = $patient;
     echo "Patient ajouté avec succès.\n";
         }   
-function getPatientByTel(array $patients, string $tel):int {
+function getPatientByTel( string $tel):int {
+    global $patients;
     foreach ($patients as $index => $patient) {
         if ($patient['telephone'] === $tel) {
             return $index;
@@ -14,7 +22,8 @@ function getPatientByTel(array $patients, string $tel):int {
     return -1;
 }
 
-function getDemandePatientByKey(array $demandes,string $key, string $value):array {
+function getDemandePatientByKey(string $key, string $value):array {
+    global $demandes;
     $demandesWithKey=[] ;
     foreach ($demandes as  $demande) {
         if ($demande[$key] === $value) {
@@ -28,7 +37,8 @@ function isVide(string $champ):bool {
      return trim($champ) === '';
 } 
 
-function  addDemandeRV(array &$patients,int $pos,array $demandeRV) {
+function  addDemandeRV(int $pos,array $demandeRV) {
+    global $patients;
     $demandeRV['id']=generateID($patients[$pos]['demandes']);
     $patients[$pos]['demandes'][]=$demandeRV;
     echo "Demande de rendez-vous ajoutée avec succès.\n";

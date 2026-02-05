@@ -2,11 +2,7 @@
 require_once 'service.php';
 require_once 'view.php';
 function main() {
-    $patients=[];
-    $typesRV=['Consultation','Prestation'];
-    $consultations=["Cardiologie","Genaraliste","Ophtalmologie"];
-    $prestations=["Radio","Analyse"];
-    $statuts=["ENATTENTE","ACCEPTER","REJETER"];
+  
     do {
         $choix = menu();
         switch ($choix) {
@@ -18,11 +14,12 @@ function main() {
             case 2:
                 echo "Faire une Demande Rv\n";
                 $telephone = saisieChaine("Entrez le telephone du patient : ");
-                $index = getPatientByTel($patients, $telephone);
+                $index = getPatientByTel($telephone);
                 if ($index == -1) {
                     echo "Patient non trouvé.\n";
                     break;
                 }
+                 global $typesRV,$consultations,$prestations;
                  $demande=  saisieDemandeRV($typesRV,$consultations,$prestations);  
                  addDemandeRV($patients,$index,$demande);
                 break;
@@ -30,7 +27,7 @@ function main() {
                 echo "Lister les Demande Rv d'un patient\n";
 
                 $telephone = saisieChaine("Entrez le telephone du patient : ");
-                $index = getPatientByTel($patients, $telephone);
+                $index = getPatientByTel($telephone);
                 if ($index == -1) {
                     echo "Patient non trouvé.\n";
                     break;
@@ -42,7 +39,7 @@ function main() {
             case 4:
                 echo "Lister les Demande Rv d'un patient par type\n";
                 $telephone = saisieChaine("Entrez le telephone du patient : ");
-                $index = getPatientByTel($patients, $telephone);
+                $index = getPatientByTel($telephone);
                 if ($index == -1) {
                     echo "Patient non trouvé.\n";
                     break;
@@ -55,12 +52,13 @@ function main() {
             case 5:
                 echo "Lister les Demande Rv d'un patient par statut\n";
                 $telephone = saisieChaine("Entrez le telephone du patient : ");
-                $index = getPatientByTel($patients, $telephone);
+                $index = getPatientByTel($telephone);
                 if ($index == -1) {
                     echo "Patient non trouvé.\n";
                     break;
                 }
                   $patient=$patients[$index];
+                   global $statuts;
                     $valueSatut = selectEnum($statuts,"Selection le statut de rendez-vous  : ");
                    $demandesByStatut= getDemandePatientByKey($patient['demandes'],"statut",   $valueSatut);
                     showDemandeRV($demandesByStatut);
